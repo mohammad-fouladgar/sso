@@ -1,15 +1,15 @@
 <?php
 
-use Fouladgar\SSO\Controllers\AuthController;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
-use Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\RouteCollection;
 
-$route = new Route('/auth/login', ['_controller' => AuthController::class, 'method' => 'login']);
-$routes = new RouteCollection();
-$routes->add('login', $route);
+$fileLocator = new FileLocator(array(__DIR__));
+$loader = new YamlFileLoader($fileLocator);
+$routes = $loader->load('routes.yaml');
 
 $context = new RequestContext();
 $context->fromRequest(Request::createFromGlobals());
@@ -17,7 +17,9 @@ $context->fromRequest(Request::createFromGlobals());
 $matcher = new UrlMatcher($routes, $context);
 $parameters = $matcher->match($context->getPathInfo());
 
-$controller = $parameters['_controller'];
-$method = $parameters['method'];
+[$controller, $method] = explode('::', $parameters['controller']);
 
-return (new $controller)->{$method}();
+$containerBuilder = new ContainerBuilder();
+$containerBuilder->register($controller, $controller);
+
+return $containerBuilder->get($controller)->{$method}();

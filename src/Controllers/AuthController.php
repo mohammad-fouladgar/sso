@@ -8,6 +8,11 @@ class AuthController
 {
     public function login()
     {
-       return (new Response('YAYA'))->send();
+       return (new Response('LOGIN'))->send();
+    }
+
+    public function logout()
+    {
+        return (new Response('LOGOUT'))->send();
     }
 }

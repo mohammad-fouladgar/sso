@@ -3,3 +3,9 @@
 .phpunit.result.cache
 composer.lock
 .idea
+.DS_Store
+*.log
+.idea/*
+.vscode
+cache
+.htaccess

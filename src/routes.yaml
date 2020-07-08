@@ -1,8 +1,0 @@
-login:
-  path: /auth/login
-  defaults: { controller: 'Fouladgar\SSO\Controllers\AuthController::login' }
-
-logout:
-  path: /auth/logout
-  methods: [POST]
-  defaults: { controller: 'Fouladgar\SSO\Controllers\AuthController::logout' }

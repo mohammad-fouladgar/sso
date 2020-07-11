@@ -1,6 +1,6 @@
 <?php
 
-namespace Fouladgar\SSO\Tests;
+namespace Fouladgar\SSO\Server\Tests;
 
 use PHPUnit\Framework\TestCase;
 

@@ -1,10 +1,10 @@
 {
-  "name": "fouladgar/sso",
+  "name": "fouladgar/sso-server",
   "description": "",
   "keywords": [],
   "support": {
-    "issues": "https://github.com/mohammad-fouladgar/sso/issues",
-    "source": "https://github.com/mohammad-fouladgar/sso"
+    "issues": "https://github.com/mohammad-fouladgar/sso-server/issues",
+    "source": "https://github.com/mohammad-fouladgar/sso-server"
   },
   "authors": [
     {
@@ -24,12 +24,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Fouladgar\\SSO\\": "src/"
+      "Fouladgar\\SSO\\Server": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Fouladgar\\SSO\\Tests\\": "tests/"
+      "Fouladgar\\SSO\\Server\\Tests\\": "tests/"
     }
   },
   "scripts": {
